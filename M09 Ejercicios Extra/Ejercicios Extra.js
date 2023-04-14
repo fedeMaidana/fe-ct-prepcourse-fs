@@ -6,6 +6,9 @@ function deObjetoAarray(objeto) {
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+   let newObject = Object.entries(objeto)
+
+   return newObject
 }
 
 function numberOfCharacters(string) {
@@ -14,6 +17,14 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético.
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
+   let object = {}
+   let array = string.split('').sort()
+
+   array.forEach(letter => {
+      object[letter] ? object[letter] += 1 : object[letter] = 1
+   });
+
+   return object
 }
 
 function capToFront(string) {
@@ -22,6 +33,14 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+   let minusculas = ''
+   let mayusculas = ''
+
+   for(let i = 0; i < string.length; i++){
+      string[i] === string[i].toUpperCase() ? mayusculas += string[i] : minusculas += string[i]
+   }
+
+   return `${mayusculas}${minusculas}`
 }
 
 function asAmirror(frase) {
@@ -29,18 +48,32 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+   let words = frase.split(' ')
+
+   let invertedWords = words.map(word => {
+      return word.split('').reverse().join('')
+   })
+
+   let string = invertedWords.join(' ')
+
+   return string
 }
 
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+   let string = numero.toString()
+   let reversed = string.split('').reverse().join('')
+
+   return string === reversed ? 'Es capicua' : 'No es capicua'
 }
 
 function deleteAbc(string) {
    // Tu tarea es eliminar las letras "a", "b" y "c" del string recibido.
    // Retorna el string sin estas letras.
    // Tu código:
+   return string.replace(/[abc]/gi, '')
 }
 
 function sortArray(arrayOfStrings) {
@@ -49,6 +82,9 @@ function sortArray(arrayOfStrings) {
    // de la longitud de cada string.
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
+   return arrayOfStrings.sort(function(a, b) {
+      return a.length - b.length
+   })
 }
 
 function buscoInterseccion(array1, array2) {
@@ -58,6 +94,15 @@ function buscoInterseccion(array1, array2) {
    // Si no tienen elementos en común, retornar un arreglo vacío.
    // [PISTA]: los arreglos no necesariamente tienen la misma longitud.
    // Tu código:
+   let comunes = []
+
+   for(let i = 0; i < array1.length; i++){
+      if(array2.includes(array1[i])){
+         comunes.push(array1[i])
+      }
+   }
+
+   return comunes
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
